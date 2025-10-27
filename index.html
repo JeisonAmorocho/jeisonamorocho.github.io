@@ -1,117 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeison Leonardo Amorocho Morales – Mathematician</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeison Leonardo Amorocho Morales -Mathematician</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0d1117;
+    color: #f0f6fc;
+    margin: 0;
+    padding: 0;
+  }
 
-  <!-- MathJax for LaTeX equations -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  header {
+    background: linear-gradient(90deg, #1f2937, #111827);
+    padding: 20px;
+    text-align: center;
+  }
 
-  <!-- Styling -->
-  <style>
-    body {
-      font-family: 'Georgia', serif;
-      background-color: #fafafa;
-      color: #222;
-      max-width: 850px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-    }
+  header h1 {
+    color: #58a6ff;
+    font-size: 2.5em;
+    margin: 0;
+  }
 
-    h1 {
-      font-size: 2.4em;
-      border-bottom: 3px solid #333;
-      padding-bottom: 5px;
-      margin-bottom: 0.5em;
-    }
+  section {
+    padding: 30px;
+    max-width: 900px;
+    margin: auto;
+  }
 
-    h2 {
-      margin-top: 1.5em;
-      color: #333;
-      border-left: 4px solid #555;
-      padding-left: 8px;
-    }
+  h2 {
+    color: #9be9a8;
+    border-bottom: 2px solid #58a6ff;
+    padding-bottom: 5px;
+  }
 
-    a {
-      color: #0047AB;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+  p {
+    line-height: 1.6;
+    font-size: 1.1em;
+  }
 
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      margin-top: 40px;
-      color: #555;
-    }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+  }
 
-    /* --- Tabs --- */
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 25px 0;
-    }
+  .gallery img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-    .tab-button {
-      background-color: #eee;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 8px 16px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+  .gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(88, 166, 255, 0.4);
+  }
 
-    .tab-button.active {
-      background-color: #333;
-      color: white;
-      border-color: #333;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-      animation: fadeIn 0.4s;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    .image-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 25px;
-    }
-
-    .profile-img {
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    }
-
-    .topology-img {
-      width: 300px;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    }
-  </style>
+  footer {
+    background-color: #111827;
+    text-align: center;
+    padding: 15px;
+    color: #888;
+    margin-top: 40px;
+  }
+</style>
 </head>
-
 <body>
   <h1>Jeison Amorocho Morales</h1>
 

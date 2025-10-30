@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jeison Leonardo Amorocho Morales – Mathematician</title>
 
-  <!-- MathJax for LaTeX equations -->
+  <!-- MathJax -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async 
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
 
-  <!-- Styling -->
   <style>
+    /* ---- General ---- */
     body {
       font-family: 'Georgia', serif;
       background-color: #fafafa;
@@ -21,6 +21,25 @@
       margin: 40px auto;
       padding: 0 20px;
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* --- Fondo con imagen difuminada --- */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('87e3ae7a-bd3a-44dc-9ed9-9eac0a88f055.png');
+      background-size: 40%;
+      background-repeat: no-repeat;
+      background-position: right bottom;
+      opacity: 0.08; /* más bajo = más sutil */
+      z-index: -1;
+      filter: blur(1px);
     }
 
     h1 {
@@ -91,6 +110,7 @@
       to { opacity: 1; }
     }
 
+    /* --- Imagen de perfil --- */
     .image-container {
       display: flex;
       justify-content: center;

@@ -158,45 +158,43 @@
   margin-top: 30px;
 }
 
-/* Tarjetas de saludo */
-.hello-card {
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  padding: 14px 20px;
-  font-size: 1.1em;
+.hello-box {
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 25px;
   text-align: center;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  
-  /* Ocultas al inicio */
+  font-size: 1.6em;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  min-height: 60px;
+
+  /* animación fade */
   opacity: 0;
-  transform: translateY(20px);
-
-  /* Animación */
-  animation: helloFade 0.6s forwards ease-out;
+  animation: fadeIn 0.6s forwards;
 }
 
-/* Animación */
-@keyframes helloFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Delays automáticos para cada tarjeta */
-.hello-card:nth-child(1)  { animation-delay: 0.1s; }
-.hello-card:nth-child(2)  { animation-delay: 0.2s; }
-.hello-card:nth-child(3)  { animation-delay: 0.3s; }
-.hello-card:nth-child(4)  { animation-delay: 0.4s; }
-.hello-card:nth-child(5)  { animation-delay: 0.5s; }
-.hello-card:nth-child(6)  { animation-delay: 0.6s; }
-.hello-card:nth-child(7)  { animation-delay: 0.7s; }
-.hello-card:nth-child(8)  { animation-delay: 0.8s; }
-.hello-card:nth-child(9)  { animation-delay: 0.9s; }
   </style>
 </head>
-
+<script>
+const messages = [
+  "Hello",
+  "Hola",
+  "Bonjour",
+  "Hallo",
+  "Ciao",
+  "Olá",
+  "こんにちは – Konnichiwa",
+  "مرحبا – Marhaba",
+  "Здравствуйте – Zdravstvuyte"
+];
 <body>
   <h1>Jeison Amorocho Morales</h1>
 
@@ -209,17 +207,7 @@
       Hello and welcome to my personal website! I'm really happy you're here. This page is a small space where I share a bit of who I am and what I love to do.
     </p>
 
-    <div class="hello-grid">
-  <div class="hello-card">Hello</div>
-  <div class="hello-card">Hola</div>
-  <div class="hello-card">Bonjour</div>
-  <div class="hello-card">Hallo</div>
-  <div class="hello-card">Ciao</div>
-  <div class="hello-card">Olá</div>
-  <div class="hello-card">こんにちは – Konnichiwa</div>
-  <div class="hello-card">مرحبا – Marhaba</div>
-  <div class="hello-card">Здравствуйте – Zdravstvuyte</div>
-</div>
+    <div class="hello-box" id="helloBox">Hello</div>
   </div>
 
   

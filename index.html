@@ -180,37 +180,20 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
+ .hello-box {
+      width: 250px;
+      padding: 20px;
+      margin: 40px auto;
+      background-color: #222;
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      border-radius: 15px;
+      opacity: 1;
+      transition: opacity 0.8s ease-in-out;
+    }
   </style>
 </head>
-<script>
-const messages = [
-  "Hello",
-  "Hola",
-  "Bonjour",
-  "Hallo",
-  "Ciao",
-  "Olá",
-  "こんにちは – Konnichiwa",
-  "مرحبا – Marhaba",
-  "Здравствуйте – Zdravstvuyte"
-];
-
-let index = 0;
-const box = document.getElementById("helloBox");
-
-function showNextMessage() {
-  box.style.opacity = 0; // fade out
-
-  setTimeout(() => {
-    index = (index + 1) % messages.length; // siguiente saludo
-    box.textContent = messages[index];     // cambiar texto
-    box.style.opacity = 1;                 // fade in
-  }, 500);
-}
-
-setInterval(showNextMessage, 2000); // cada 2 segundos
-</script>
 <body>
   <h1>Jeison Amorocho Morales</h1>
 
@@ -225,7 +208,35 @@ setInterval(showNextMessage, 2000); // cada 2 segundos
 
     
   </div>
-  <div class="hello-box" id="helloBox">Hello</div>
+    <div class="hello-box" id="helloBox">Hello</div>
+
+  <script>
+    const texts = [
+      "Hello",
+      "Hola",
+      "Bonjour",
+      "Hallo",
+      "Ciao",
+      "Olá",
+      "こんにちは – Konnichiwa",
+      "مرحبا – Marhaba",
+      "Здравствуйте – Zdravstvuyte"
+    ];
+
+    let index = 0;
+    const box = document.getElementById("helloBox");
+
+    setInterval(() => {
+      box.style.opacity = 0; // fade out
+
+      setTimeout(() => {
+        index = (index + 1) % texts.length;
+        box.textContent = texts[index];
+        box.style.opacity = 1; // fade in
+      }, 800);
+
+    }, 2000);
+  </script>
   
   <!-- TAB BUTTONS -->
   <div class="tabs">

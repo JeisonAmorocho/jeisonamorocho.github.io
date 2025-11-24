@@ -195,6 +195,22 @@ const messages = [
   "مرحبا – Marhaba",
   "Здравствуйте – Zdravstvuyte"
 ];
+
+let index = 0;
+const box = document.getElementById("helloBox");
+
+function showNextMessage() {
+  box.style.opacity = 0; // fade out
+
+  setTimeout(() => {
+    index = (index + 1) % messages.length; // siguiente saludo
+    box.textContent = messages[index];     // cambiar texto
+    box.style.opacity = 1;                 // fade in
+  }, 500);
+}
+
+setInterval(showNextMessage, 2000); // cada 2 segundos
+</script>
 <body>
   <h1>Jeison Amorocho Morales</h1>
 

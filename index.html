@@ -8,10 +8,8 @@
   <!-- MathJax for LaTeX equations -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <!-- Styling -->
   <style>
     body {
       font-family: 'Georgia', serif;
@@ -53,7 +51,9 @@
       color: #555;
     }
 
-    /* --- Tabs --- */
+    /* ---------------------------
+       TABS
+    --------------------------- */
     .tabs {
       display: flex;
       justify-content: center;
@@ -91,6 +91,45 @@
       to { opacity: 1; }
     }
 
+    /* ---------------------------
+       Welcome Section
+    --------------------------- */
+    .welcome-section {
+      text-align: center;
+      margin: 35px 0;
+    }
+
+    .welcome-section h2 {
+      border-left: none;
+      padding-left: 0;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    .hello-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .hello-card {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 14px 22px;
+      font-size: 1.1em;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    .hello-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    }
+
+    /* Image containers */
     .image-container {
       display: flex;
       justify-content: center;
@@ -113,15 +152,36 @@
     }
   </style>
 </head>
-</html>
+
 <body>
   <h1>Jeison Amorocho Morales</h1>
+
+  <!-- ========================
+       WELCOME SECTION
+  ========================== -->
+  <div class="welcome-section">
+    <h2>Welcome!</h2>
+    <p style="font-size: 1.2em;">
+      Hello and welcome to my personal website! I'm really happy you're here. This page is a small space where I share a bit of who I am and what I love to do.
+    </p>
+
+    <div class="hello-grid">
+      <div class="hello-card">Hello (English)</div>
+      <div class="hello-card">Hola (Spanish)</div>
+      <div class="hello-card">Bonjour (French)</div>
+      <div class="hello-card">Hallo (German)</div>
+      <div class="hello-card">Ciao (Italian)</div>
+      <div class="hello-card">Olá (Portuguese)</div>
+      <div class="hello-card">こんにちは – Konnichiwa (Japanese)</div>
+      <div class="hello-card">مرحبا – Marhaba (Arabic)</div>
+      <div class="hello-card">Здравствуйте – Zdravstvuyte (Russian)</div>
+    </div>
+  </div>
 
   <p><strong>Master’s Student in Mathematics</strong><br>
     Universidad Industrial de Santander (UIS), Colombia<br>
     Email: <a href="mailto:jeisonamorochom@gmail.com">jeisonamorochom@gmail.com</a>
   </p>
-
   <!-- TAB BUTTONS -->
   <div class="tabs">
     <button class="tab-button active" onclick="openTab(event, 'personal')">Personal</button>

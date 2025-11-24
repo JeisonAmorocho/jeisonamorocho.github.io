@@ -150,6 +150,50 @@
       border-radius: 16px;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
     }
+    /* ---- HELLO GRID ---- */
+.hello-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+
+/* Tarjetas de saludo */
+.hello-card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 1.1em;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  
+  /* Ocultas al inicio */
+  opacity: 0;
+  transform: translateY(20px);
+
+  /* Animación */
+  animation: helloFade 0.6s forwards ease-out;
+}
+
+/* Animación */
+@keyframes helloFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delays automáticos para cada tarjeta */
+.hello-card:nth-child(1)  { animation-delay: 0.1s; }
+.hello-card:nth-child(2)  { animation-delay: 0.2s; }
+.hello-card:nth-child(3)  { animation-delay: 0.3s; }
+.hello-card:nth-child(4)  { animation-delay: 0.4s; }
+.hello-card:nth-child(5)  { animation-delay: 0.5s; }
+.hello-card:nth-child(6)  { animation-delay: 0.6s; }
+.hello-card:nth-child(7)  { animation-delay: 0.7s; }
+.hello-card:nth-child(8)  { animation-delay: 0.8s; }
+.hello-card:nth-child(9)  { animation-delay: 0.9s; }
   </style>
 </head>
 
@@ -166,16 +210,16 @@
     </p>
 
     <div class="hello-grid">
-      <div class="hello-card">Hello (English)</div>
-      <div class="hello-card">Hola (Spanish)</div>
-      <div class="hello-card">Bonjour (French)</div>
-      <div class="hello-card">Hallo (German)</div>
-      <div class="hello-card">Ciao (Italian)</div>
-      <div class="hello-card">Olá (Portuguese)</div>
-      <div class="hello-card">こんにちは – Konnichiwa (Japanese)</div>
-      <div class="hello-card">مرحبا – Marhaba (Arabic)</div>
-      <div class="hello-card">Здравствуйте – Zdravstvuyte (Russian)</div>
-    </div>
+  <div class="hello-card">Hello</div>
+  <div class="hello-card">Hola</div>
+  <div class="hello-card">Bonjour</div>
+  <div class="hello-card">Hallo</div>
+  <div class="hello-card">Ciao</div>
+  <div class="hello-card">Olá</div>
+  <div class="hello-card">こんにちは – Konnichiwa</div>
+  <div class="hello-card">مرحبا – Marhaba</div>
+  <div class="hello-card">Здравствуйте – Zdravstvuyte</div>
+</div>
   </div>
 
   <p><strong>Master’s Student in Mathematics</strong><br>
@@ -189,15 +233,11 @@
   </div>
 
   <!-- PERSONAL TAB -->
-  <div id="personal" class="tab-content active">
+  <div <div id="personal" class="tab-content">
     <div class="image-container">
       <img src="jeison.jpg" alt="Jeison Amorocho" class="profile-img">
     </div>
 
-    <h2>Welcome</h2>
-    <p>
-    Hello and welcome to my personal website! I'm really happy you're here. This page is a small space where I share a bit of who I am and what I love to do.
-    </p>
     <h2>About Me</h2>
     <p>
     My name is Jeison. I’m from a little town in Colombia called Yarima, but I currently live in Bucaramanga. I enjoy learning new things, exploring nature, and I really like going to the gym. I’m also passionate about music, 

@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,7 @@
 
   <!-- MathJax for LaTeX equations -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
     body {
@@ -52,29 +52,43 @@
     }
 
     /* ---------------------------
-       TABS
+       TABS - Floating at bottom left
     --------------------------- */
     .tabs {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
       display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 25px 0;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 1000;
     }
 
     .tab-button {
-      background-color: #eee;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 8px 16px;
+      background-color: #333;
+      color: white;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 12px 20px;
       cursor: pointer;
       font-weight: bold;
-      transition: 0.3s;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      min-width: 120px;
+    }
+
+    .tab-button:hover {
+      background-color: #555;
+      border-color: #555;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
     }
 
     .tab-button.active {
-      background-color: #333;
+      background-color: #0047AB;
       color: white;
-      border-color: #333;
+      border-color: #0047AB;
+      box-shadow: 0 6px 12px rgba(0, 71, 171, 0.5);
     }
 
     .tab-content {
@@ -87,8 +101,13 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     /* ---------------------------
@@ -161,9 +180,9 @@
   <!-- HELLO TRANSITION BOX -->
   <div class="hello-box" id="helloBox">Hello</div>
 
-   <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 15px;">
-      <img src="rocky.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;">
-    </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 15px;">
+    <img src="rocky.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;">
+  </div>
   <script>
     const texts = [
       "Hello",
@@ -211,8 +230,10 @@
 
     <h2>About Me</h2>
     <p>
-      My name is Jeison. I’m from a little town in Colombia called Yarima, but I currently live in Bucaramanga. I enjoy learning new things, exploring nature, and I really like going to the gym.
-      I’m also passionate about music, good coffee (like any mathematician), and discovering new places. I believe that life is better when we do what we love and stay curious about the world around us
+      My name is Jeison and I'm 22 years old. I’m from a little town in Colombia called Yarima, but I currently live in Bucaramanga. I enjoy
+      learning new things, exploring nature, and I really like going to the gym.
+      I’m also passionate about music, good coffee (like any mathematician), and discovering new places. I believe that
+      life is better when we do what we love and stay curious about the world around us
     </p>
 
     <h2>Some Photos</h2>
@@ -243,9 +264,12 @@
 
     <h2>Academic life and Goals</h2>
     <p>
-     I am a mathematics graduate student at the Universidad Industrial de Santander. My main interests lie in topology, descriptive set theory, and their connections to analysis. 
-      I am also deeply interested in functional analysis and differential geometry. I aim to pursue a Ph.D. in Mathematics and continue doing research abroad, 
-      focusing on topology and descriptive set theory, with additional interests in functional analysis and differential geometry.
+      I am a mathematics graduate student at the Universidad Industrial de Santander. My main interests lie in topology,
+      descriptive set theory, and their connections to analysis.
+      I am also deeply interested in functional analysis and differential geometry. I aim to pursue a Ph.D. in
+      Mathematics and continue doing research abroad,
+      focusing on topology and descriptive set theory, with additional interests in functional analysis and differential
+      geometry.
     </p>
 
     <h2>Research Interests</h2>
@@ -257,7 +281,8 @@
 
     <h2>Current Work</h2>
     <p>
-      Currently, I am studying compact, T₁, and second-countable spaces (CTS) and their representations through hereditary families, spectra, 
+      Currently, I am studying compact, T₁, and second-countable spaces (CTS) and their representations through
+      hereditary families, spectra,
       and the strong Choquet property, as well as extensions that preserve Borel sets.
     </p>
 
@@ -302,4 +327,5 @@
   </script>
 
 </body>
+
 </html>

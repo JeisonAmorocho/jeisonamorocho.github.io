@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -218,7 +218,7 @@
   <!-- ========================
        WELCOME SECTION
   ========================== -->
-  <div class="welcome-section">
+  <div class="welcome-section" id="welcomeSection">
     <h2>Welcome!</h2>
     <p style="font-size: 1.2em;">
       Hello and welcome to my personal website! I'm really happy you're here.
@@ -229,7 +229,7 @@
   <!-- HELLO TRANSITION BOX -->
   <div class="hello-box" id="helloBox">Hello</div>
 
-  <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 15px;">
+  <div id="rockyPhoto" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 15px;">
     <img src="rocky.jpg" style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;">
   </div>
   <script>
@@ -368,6 +368,12 @@
   <!-- Script for Tabs -->
   <script>
     function openTab(evt, tabName) {
+      // Hide welcome content when tab is clicked
+      document.getElementById('welcomeSection').style.display = 'none';
+      document.getElementById('helloBox').style.display = 'none';
+      document.getElementById('rockyPhoto').style.display = 'none';
+
+      // Show tab content
       document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
 

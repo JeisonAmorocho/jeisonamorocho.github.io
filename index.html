@@ -203,19 +203,48 @@
       display: block;
     }
   </style>
-  <script>
-document.addEventListener("click", function () {
+ <script>
+function playMusic() {
   const music = document.getElementById("bgmusic");
-  music.volume = 0.01;
+  music.volume = 0.05;
   music.play();
-}, { once: true });
+}
 </script>
 </head>
 
 <body>
-  <audio id="bgmusic" autoplay loop>
+
+<audio id="bgmusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
+
+<h1>Jeison Leonardo Amorocho Morales</h1>
+
+<!-- BOTÓN DE MÚSICA -->
+<div style="text-align:center; margin-top:20px;">
+
+  <p style="font-size:1.2em;">
+    🦆
+  </p>
+
+  <img src="https://media.giphy.com/media/ya4eevXU490Iw/giphy.gif" 
+       alt="dancing duck"
+       style="width:120px; display:block; margin:auto;">
+
+  <button onclick="playMusic()" 
+          style="
+          margin-top:15px;
+          padding:12px 25px;
+          font-size:16px;
+          background-color:#222;
+          color:white;
+          border:none;
+          border-radius:10px;
+          cursor:pointer;">
+    🎵 Play background music
+  </button>
+
+</div>
   <h1>Jeison Leonardo Amorocho Morales</h1>
 
   <!-- ========================

@@ -221,24 +221,29 @@ function playMusic() {
 <h1>Jeison Leonardo Amorocho Morales</h1>
 
 <!-- BOTÓN DE MÚSICA -->
-<div style="text-align:center; margin-top:20px;">
-
+<div style="
+position: fixed;
+bottom: 20px;
+right: 20px;
+text-align: center;
+z-index: 1000;
+">
 
   <img src="https://media.giphy.com/media/Ru00axlTLzs2gNAVms/giphy.gif" 
-       alt="dancing duck"
-       style="width:120px; display:block; margin:auto;">
+       alt="music bird"
+       style="width:100px; display:block; margin:auto;">
 
   <button onclick="playMusic()" 
           style="
-          margin-top:15px;
-          padding:12px 25px;
-          font-size:16px;
+          margin-top:10px;
+          padding:10px 18px;
+          font-size:14px;
           background-color:#222;
           color:white;
           border:none;
           border-radius:10px;
           cursor:pointer;">
-    🎵 Play background music
+    🎵 Music
   </button>
 
 </div>

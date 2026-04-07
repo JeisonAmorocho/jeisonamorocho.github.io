@@ -1,88 +1,432 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <style>
-        /* Main content wrapper */
-        .main-content {
-            margin-left: 170px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeison Leonardo Amorocho Morales – Mathematician</title>
 
-        /* Typography improvements */
-        body {
-            line-height: 1.8;
-            font-family: Arial, sans-serif;
-        }
+  <!-- MathJax for LaTeX equations -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-        /* Tab navigation styling */
-        .tabs {
-            list-style-type: none;
-            padding: 0;
-        }
-        .tabs li {
-            display: inline;
-            margin-right: 15px;
-            text-transform: uppercase;
-            outline: 1px solid transparent;
-        }
-        .tabs li:hover {
-            outline: 1px solid black;
-        }
+  <style>
+    body {
+  font-family: 'Georgia', serif;
+  background-color: #1b1b1b;
+  background-image:
+    radial-gradient(circle at top, #2e2e2e, #1b1b1b);
+  color: #e6e6e6;
+}
+    
 
-        /* Custom bullet styling for lists */
-        ul {
-            list-style: none;
-        }
-        ul li:before {
-            content: '\2022'; /* bullet character */
-            color: blue; /* custom bullet color */
-            font-size: 1.5em; /* bullet size */
-            margin-right: 10px; /* space between bullet and text */
-        }
+    h1 {
+      font-size: 2.4em;
+      border-bottom: 3px solid #333;
+      padding-bottom: 5px;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
 
-        /* Improved image styling */
-        img {
-            border: 5px solid blue;
-            border-radius: 10px;
-        }
+    h2 {
+  color: #9ecbff;
+  border-left: 4px solid #4f83cc;
+}
 
-        /* CSS grid layout for photo album */
-        .photo-album {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
-        }
+    a {
+      color: #0047AB;
+      text-decoration: none;
+    }
 
-        /* Enhanced footer styling */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #f1f1f1;
-            border-top: 1px solid #ddd;
-        }
-    </style>
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      margin-top: 40px;
+      color: #555;
+    }
+
+    /* ---------------------------
+       TABS - Floating at left side
+    --------------------------- */
+    .tabs {
+  position: fixed;
+  top: 20px;          /* distancia desde arriba */
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+    .tab-button {
+      background-color: #333;
+      color: white;
+      border: 2px solid #333;
+      border-radius: 8px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      min-width: 120px;
+    }
+
+    .tab-button:hover {
+      background-color: #555;
+      border-color: #555;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .tab-button.active {
+      background-color: #0047AB;
+      color: white;
+      border-color: #0047AB;
+      box-shadow: 0 6px 12px rgba(0, 71, 171, 0.5);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.4s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ---------------------------
+       Welcome Section
+    --------------------------- */
+    .welcome-section {
+      text-align: center;
+      margin: 35px 0;
+    }
+
+    .welcome-section h2 {
+      border-left: none;
+      padding-left: 0;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    /* ---- HELLO TRANSITION BOX ---- */
+    .hello-box {
+  width: 260px;
+  padding: 22px;
+  margin: 45px auto;
+  background: linear-gradient(135deg, #0f2a44, #1f3b5c);
+  color: #eaeaea;
+  font-size: 26px;
+  text-align: center;
+  border-radius: 16px;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.8s ease-in-out, transform 0.4s ease;
+}
+    /* Image containers */
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 25px;
+    }
+
+    .profile-img {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .topology-img {
+      width: 300px;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Photo Album Style */
+    .photo-album {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+      margin-top: 25px;
+      padding: 20px;
+    }
+
+    .photo-frame {
+      background: white;
+      padding: 15px 15px 50px 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15);
+      transform: rotate(0deg);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .photo-frame:nth-child(3n+1) {
+      transform: rotate(-2deg);
+    }
+
+    .photo-frame:nth-child(3n+2) {
+      transform: rotate(1.5deg);
+    }
+
+    .photo-frame:nth-child(3n) {
+      transform: rotate(-1deg);
+    }
+
+    .photo-frame:hover {
+      transform: rotate(0deg) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    .photo-frame img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+  <script>
+document.addEventListener("click", function () {
+  const music = document.getElementById("bgmusic");
+  music.play();
+}, { once: true });
+</script>
 </head>
+
 <body>
-    <div class="main-content">
-        <h1>Hello!</h1>
-        <div class="hello-box-animation">
-            <!-- Animation code remains unchanged -->
-        </div>
-        <ul class="tabs">
-            <li>Home</li>
-            <li>About</li>
-            <li>Projects</li>
-        </ul>
-        <div class="photo-album">
-            <img src="path/to/photo1.jpg" alt="Photo 1">
-            <img src="path/to/photo2.jpg" alt="Photo 2">
-            <img src="path/to/photo3.jpg" alt="Photo 3">
-        </div>
+  <audio id="bgmusic" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+  <h1>Jeison Leonardo Amorocho Morales</h1>
+
+  <!-- ========================
+       WELCOME SECTION
+  ========================== -->
+  <div class="welcome-section" id="welcomeSection">
+    <h2>Welcome!</h2>
+    <p style="font-size: 1.2em;">
+      Hello and welcome to my personal website! I'm really happy you're here.
+      This page is a small space where I share a bit of who I am and what I love to do.
+    </p>
+  </div>
+
+  <!-- HELLO TRANSITION BOX -->
+  <div class="hello-box" id="helloBox">Hello</div>
+
+  <div id="rockyPhoto" style="display: flex; justify-content: center; margin-top: 15px;">
+  <div style="text-align: center;">
+    <img src="rocky.jpg" 
+         style="width: 200px; height: 200px; object-fit: cover; border-radius: 10px;">
+    <p style="margin-top: 8px; font-weight: bold;">Rocky</p>
+  </div>
+</div>
+  <script>
+    const texts = [
+      "Hello",
+      "Hola",
+      "Bonjour",
+      "Hallo",
+      "Ciao",
+      "Olá",
+      "こんにちは – Konnichiwa",
+      "مرحبا – Marhaba",
+      "Здравствуйте – Zdravstvuyte"
+    ];
+
+    let index = 0;
+    const box = document.getElementById("helloBox");
+
+    setInterval(() => {
+      box.style.opacity = 0; // fade out
+
+      setTimeout(() => {
+        index = (index + 1) % texts.length;
+        box.textContent = texts[index];
+        box.style.opacity = 1; // fade in
+      }, 800);
+
+    }, 2000);
+  </script>
+
+  <!-- TAB BUTTONS -->
+  <div class="tabs">
+    <button class="tab-button" onclick="showWelcome(event)">Welcome</button>
+    <button class="tab-button" onclick="openTab(event, 'personal')">Personal</button>
+    <button class="tab-button" onclick="openTab(event, 'academic')">Academic</button>
+  </div>
+
+  <!-- PERSONAL TAB -->
+  <div id="personal" class="tab-content">
+    <div class="image-container">
+      <img src="jeison.jpg" alt="Jeison Amorocho" class="profile-img">
     </div>
-    <footer>
-        <p>© 2026 JeisonAmorocho</p>
-    </footer>
+
+    <p><strong>Master’s Student in Mathematics</strong><br>
+      Universidad Industrial de Santander (UIS), Colombia<br>
+      Email: <a href="mailto:jeisonamorochom@gmail.com">jeisonamorochom@gmail.com</a>
+    </p>
+
+    <h2>About Me</h2>
+    <p>
+      My name is Jeison and I'm 22 years old. I’m from a little town in Colombia called Yarima, but I currently live in
+      Bucaramanga. I enjoy
+      learning new things, exploring nature, and I really like going to the gym.
+      I’m also passionate about music, good coffee (like any mathematician), and discovering new places. I believe that
+      life is better when we do what we love and stay curious about the world around us
+    </p>
+
+    <h2>Beyond Mathematics</h2>
+<p>
+  Moments, people, and experiences that inspire me, shape my perspective, and bring balance to my life beyond mathematics.
+</p>
+
+    <div class="photo-album">
+      <div class="photo-frame"><img src="dadandmom.jpeg" alt="dadandmom"></div>
+      <div class="photo-frame"><img src="family.jpeg" alt="family"></div>
+      <div class="photo-frame"><img src="nico.jpeg" alt="Nicole"></div>-->
+      <div class="photo-frame"><img src="withrocky.jpeg" alt="withrocky"></div>
+      <div class="photo-frame"><img src="1.jpg" alt="Photo 1"></div>
+      <div class="photo-frame"><img src="2.jpg" alt="Photo 2"></div>
+      <div class="photo-frame"><img src="4.jpg" alt="Photo 3"></div>
+      <div class="photo-frame"><img src="13.jpg" alt="Photo 4"></div>
+      <div class="photo-frame"><img src="7.jpg" alt="Photo 5"></div>
+      <div class="photo-frame"><img src="11.jpg" alt="Photo 6"></div>
+      <div class="photo-frame"><img src="8.jpg" alt="Photo 7"></div>
+      <div class="photo-frame"><img src="9.jpg" alt="Photo 8"></div>
+      <div class="photo-frame"><img src="10.jpg" alt="Photo 9"></div>
+      <div class="photo-frame"><img src="3.jpg" alt="Photo 10"></div>
+      <div class="photo-frame"><img src="5.jpg" alt="Photo 11"></div>
+      <div class="photo-frame"><img src="12.jpg" alt="Photo 12"></div>
+      <div class="photo-frame"><img src="simposio.jpg" alt="Photo 13"></div>
+    </div>
+  </div>
+
+  <!-- ACADEMIC TAB -->
+  <div id="academic" class="tab-content">
+    <div class="image-container">
+      <img src="topology.jpeg" alt="Topology" class="topology-img">
+    </div>
+
+    <h2>Academic life and Goals</h2>
+    <p>
+      I am a Master’s student in Mathematics at the Universidad Industrial de Santander. My main interests lie in topology,
+      descriptive set theory, and their connections to analysis.
+      I am also deeply interested in functional analysis and differential geometry. I aim to pursue a Ph.D. in
+      Mathematics and continue doing research abroad,
+      focusing on topology and descriptive set theory, with additional interests in functional analysis and differential
+      geometry.
+    </p>
+
+    <h2>Research Interests</h2>
+    <ul>
+      <li>Topology of compact, T₁, second-countable spaces</li>
+      <li>Ideals on ℕ and hereditary families</li>
+      <li>Baire property, analytic/coanalytic sets</li>
+      
+    </ul>
+
+    <h2>Current Work</h2>
+    <p>
+      Currently, I am studying compact, T₁, and second-countable spaces (CTS) and their representations through
+      hereditary families, spectra,
+      and the strong Choquet property, as well as extensions that preserve Borel sets.
+    </p>
+
+    <h2>Curriculum Vitae</h2>
+<p>
+  <a href="cvjeisonamorocho.pdf" target="_blank">
+    📄 Download my Curriculum Vitae (PDF)
+  </a>
+</p>
+    <h2>Teaching</h2>
+    <ul>
+      <li><strong>Linear Algebra</strong> — Professor, UIS (2025)</li>
+      <li><strong>Mathematical Analysis II</strong> — Professor, UIS (2024)</li>
+    </ul>
+
+    <h2>Work in progress: Master’s thesis</h2>
+    <ul>
+      <li>
+        <strong>Representaciones de espacios CTS</strong><br>
+        <em>Under the direction of the professor Carlos Enrique Uzcátegui Aylwin</em><br>
+        <a href="Tesis(en progreso).pdf" target="_blank">
+    📄 Download (Spanish version) (PDF)
+  </a>
+      </li>
+    </ul>
+    
+    <h2>Articles in Review</h2>
+    <ul>
+      <li>
+        <strong>Orbit sets, transitivity, and sensitivity with upper semicontinuous maps</strong><br>
+        <em>Submitted for review (2025)</em><br>
+        <a href="https://arxiv.org/abs/2507.12272" target="_blank">View on arXiv</a>
+      </li>
+    </ul>
+
+    <h2>Conferences & Schools</h2>
+    <ul>
+      <li>XXIV Congreso Colombiano de Matemáticas — Pereira, 2025</li>
+      <li>Taller Mexicano de Topología — UNAM, CDMX, 2025</li>
+      <li>Research School in Geometry — UNAM, Cuernavaca, 2025</li>
+      <li>XIII Simposio Nororiental de Matemáticas — UIS, Bucaramanga, 2025</li>
+    </ul>
+  </div>
+
+  <footer>
+    © 2025 Jeison Amorocho · Built using HTML + MathJax ·
+    <a href="https://github.com/jasonamorocho" target="_blank">GitHub</a>
+  </footer>
+
+  <!-- Script for Tabs -->
+  <script>
+    function openTab(evt, tabName) {
+      // Hide welcome content when tab is clicked
+      document.getElementById('welcomeSection').style.display = 'none';
+      document.getElementById('helloBox').style.display = 'none';
+      document.getElementById('rockyPhoto').style.display = 'none';
+
+      // Show tab content
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+
+      document.getElementById(tabName).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    function showWelcome(evt) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+
+      // Show welcome content
+      document.getElementById('welcomeSection').style.display = 'block';
+      document.getElementById('helloBox').style.display = 'block';
+      document.getElementById('rockyPhoto').style.display = 'flex'; // Restore full functionality
+
+      // Activate current button
+      evt.currentTarget.classList.add('active');
+    }
+  </script>
+
 </body>
+
 </html>

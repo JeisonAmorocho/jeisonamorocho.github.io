@@ -53,140 +53,127 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
+    /* ── Photo carousel ── */
     .photo-carousel {
-  position: relative;
-  max-width: 700px;
-  margin: 30px auto 10px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      margin: 30px auto 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-.carousel-container {
-  position: relative;
-  width: 100%;
-  height: 450px;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #f0f0f0;
-}
+    .carousel-container {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      height: 450px;
+      overflow: hidden;
+      border-radius: 12px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+    }
 
-.carousel-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transform: translateX(35px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: none;
-}
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease, visibility 0.55s;
+      pointer-events: none;
+    }
 
-.carousel-slide.active {
-  opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
-}
+    .carousel-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+      pointer-events: auto;
+      z-index: 1;
+    }
 
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
 
-.carousel-btn {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  background: #333;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
+    .carousel-btn {
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border2);
+      border-radius: 50%;
+      background: var(--surface2);
+      color: var(--text);
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s, color 0.25s, transform 0.25s;
+      z-index: 2;
+    }
 
-.carousel-btn:hover {
-  background: #666;
-}
+    .carousel-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+      transform: scale(1.06);
+    }
 
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 15px;
-}
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px auto 0;
+      max-width: 720px;
+    }
 
-.carousel-dot {
-  width: 9px;
-  height: 9px;
-  border: none;
-  border-radius: 50%;
-  background: #bbb;
-  cursor: pointer;
-  padding: 0;
-}
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: var(--muted);
+      opacity: 0.55;
+      cursor: pointer;
+      transition: opacity 0.25s, transform 0.25s, background 0.25s;
+    }
 
-.carousel-dot.active {
-  background: #333;
-  transform: scale(1.3);
-}
+    .carousel-dot.active {
+      background: var(--accent);
+      opacity: 1;
+      transform: scale(1.35);
+    }
 
-@media (max-width: 600px) {
-  .carousel-container {
-    height: 300px;
-  }
+    .carousel-counter {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      margin-top: 10px;
+    }
 
-  .photo-carousel {
-    gap: 5px;
-  }
+    @media (max-width: 600px) {
+      .photo-carousel { gap: 6px; }
+      .carousel-container { height: 300px; }
+      .carousel-btn { flex-basis: 32px; width: 32px; height: 32px; font-size: 14px; }
+    }
 
-  .carousel-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-  }
-}
     body {
       font-family: 'Jost', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
-      <script>
-  const slides = document.querySelectorAll('.carousel-slide');
-  const dotsContainer = document.getElementById('carouselDots');
-
-  let currentPhoto = 0;
-
-  slides.forEach((slide, index) => {
-    const dot = document.createElement('button');
-    dot.classList.add('carousel-dot');
-
-    if (index === 0) dot.classList.add('active');
-
-    dot.addEventListener('click', () => showPhoto(index));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = document.querySelectorAll('.carousel-dot');
-
-  function showPhoto(index) {
-    slides[currentPhoto].classList.remove('active');
-    dots[currentPhoto].classList.remove('active');
-
-    currentPhoto = (index + slides.length) % slides.length;
-
-    slides[currentPhoto].classList.add('active');
-    dots[currentPhoto].classList.add('active');
-  }
-
-  function changePhoto(direction) {
-    showPhoto(currentPhoto + direction);
-  }
-</script>
-    }
+}
 
     /* ── Noise texture overlay ── */
     body::before {
@@ -662,7 +649,7 @@
   <h2 class="section-heading">Beyond mathematics</h2>
   <p>Moments, people, and experiences that inspire me.</p>
 
-  <div class="photo-carousel">
+  <div class="photo-carousel" tabindex="0" aria-label="Personal photo slideshow">
     <button class="carousel-btn prev" onclick="changePhoto(-1)">&#10094;</button>
 
     <div class="carousel-container">
@@ -720,6 +707,7 @@
   </div>
 
   <div class="carousel-dots" id="carouselDots"></div>
+  <div class="carousel-counter" id="carouselCounter" aria-live="polite">1 / 16</div>
 </div>
 
     </div>
@@ -854,6 +842,109 @@ I hope to pursue a Ph.D. in Mathematics and continue developing my research care
     welcome.classList.add('active');
     if (evt && evt.currentTarget) evt.currentTarget.classList.add('active');
   }
+
+  // Photo carousel: automatic slideshow and manual controls.
+  (function initPhotoCarousel() {
+    const carousel = document.querySelector('.photo-carousel');
+    if (!carousel) return;
+
+    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    const dotsContainer = document.getElementById('carouselDots');
+    const counter = document.getElementById('carouselCounter');
+    const previousButton = carousel.querySelector('.carousel-btn.prev');
+    const nextButton = carousel.querySelector('.carousel-btn.next');
+
+    if (!slides.length || !dotsContainer) return;
+
+    let currentPhoto = 0;
+    let autoplayTimer = null;
+    const AUTOPLAY_DELAY = 4000;
+
+    dotsContainer.innerHTML = '';
+
+    const dots = slides.map((slide, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', 'Show photo ' + (index + 1));
+      dot.addEventListener('click', () => {
+        showPhoto(index);
+        restartAutoplay();
+      });
+      dotsContainer.appendChild(dot);
+      return dot;
+    });
+
+    function showPhoto(index) {
+      currentPhoto = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        const active = i === currentPhoto;
+        slide.classList.toggle('active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+
+      dots.forEach((dot, i) => {
+        const active = i === currentPhoto;
+        dot.classList.toggle('active', active);
+        dot.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+
+      if (counter) {
+        counter.textContent = (currentPhoto + 1) + ' / ' + slides.length;
+      }
+    }
+
+    function changePhoto(direction) {
+      showPhoto(currentPhoto + direction);
+      restartAutoplay();
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer !== null) {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayTimer = window.setInterval(() => {
+        showPhoto(currentPhoto + 1);
+      }, AUTOPLAY_DELAY);
+    }
+
+    function restartAutoplay() {
+      startAutoplay();
+    }
+
+    if (previousButton) {
+      previousButton.addEventListener('click', () => changePhoto(-1));
+    }
+    if (nextButton) {
+      nextButton.addEventListener('click', () => changePhoto(1));
+    }
+
+    // Pause while the visitor is hovering over or using the carousel.
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('focusin', stopAutoplay);
+    carousel.addEventListener('focusout', startAutoplay);
+
+    // Left and right arrow keys work when the carousel is focused.
+    carousel.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        changePhoto(-1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        changePhoto(1);
+      }
+    });
+
+    showPhoto(0);
+    startAutoplay();
+  })();
 
   // Hello rotator
   const texts = [
